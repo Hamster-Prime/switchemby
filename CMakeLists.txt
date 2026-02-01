@@ -40,7 +40,7 @@ if(PLATFORM_SWITCH)
 endif()
 
 # Desktop-specific configuration
-if(PLATFORM_DESKTOP)
+if(PLATFORM_DESKTOP AND NOT PLATFORM_SWITCH)
     add_compile_definitions(
         PLATFORM_DESKTOP
     )
