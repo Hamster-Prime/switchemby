@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: switchemby-switch
-          path: build/switchemby.nro
+          path: build/app/switchemby_app.nro
