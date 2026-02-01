@@ -70,6 +70,7 @@ if(PLATFORM_SWITCH)
         borealis
         mpv
         curl
+        pulsar
         EGL
         glapi
         drm_nouveau
