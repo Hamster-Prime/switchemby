@@ -9,9 +9,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(PLATFORM_SWITCH "Build for Nintendo Switch" OFF)
 option(PLATFORM_DESKTOP "Build for Desktop (Windows/Linux/macOS)" ON)
 
+# Debug output
+message(STATUS "PLATFORM_SWITCH = ${PLATFORM_SWITCH}")
+message(STATUS "PLATFORM_DESKTOP = ${PLATFORM_DESKTOP}")
+
 # Ensure platforms are mutually exclusive
 if(PLATFORM_SWITCH)
     set(PLATFORM_DESKTOP OFF CACHE BOOL "Build for Desktop" FORCE)
+    message(STATUS "Forcing PLATFORM_DESKTOP to OFF")
 endif()
 
 # Global compiler flags
