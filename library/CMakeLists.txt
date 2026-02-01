@@ -26,9 +26,11 @@ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/borealis)
     add_library(borealis STATIC ${BOREALIS_SOURCES})
 
     # Set C++17 standard for borealis
+    target_compile_features(borealis PUBLIC cxx_std_17)
     set_target_properties(borealis PROPERTIES
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON
+        CXX_EXTENSIONS OFF
     )
 
     # Set include directories
