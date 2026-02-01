@@ -34,6 +34,7 @@ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/borealis)
         borealis/library/lib/extern/tweeny/include
         borealis/library/include/borealis/extern
         borealis/library/include/borealis/extern/tinyxml2
+        borealis/library/lib/extern/switch-libpulsar/include
         $ENV{DEVKITPRO}/portlibs/switch/include
     )
 
