@@ -14,7 +14,7 @@ MediaCard::MediaCard() {
     image_ = new brls::Image();
     image_->setWidth(200);
     image_->setHeight(280);
-    image_->setScalingType(brls::ImageScalingType::SCALE_TO_FILL);
+    image_->setScalingType(brls::ImageScalingType::CROP);
     this->addView(image_);
 
     // Create title label

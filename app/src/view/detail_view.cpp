@@ -18,7 +18,7 @@ DetailView::DetailView() {
     // Create overview label
     overview_ = new brls::Label();
     overview_->setFontSize(18);
-    overview_->setMaxLines(10);
+    // overview_->setMaxLines(10);  // TODO: setMaxLines not available in current borealis version
     this->addView(overview_);
 }
 
