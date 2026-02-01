@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          dkp-pacman -S --noconfirm --needed switch-dev switch-portlibs switch-libmpv switch-curl
+          dkp-pacman -S --noconfirm --needed switch-dev switch-portlibs switch-libmpv switch-curl switch-glfw switch-mesa switch-glm
 
       - name: Build
         run: |
