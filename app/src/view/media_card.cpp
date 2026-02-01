@@ -1,9 +1,4 @@
 #include "view/media_card.hpp"
-
-namespace emby {
-namespace view {
-
-#include "view/media_card.hpp"
 #include "utils/image_loader.hpp"
 
 namespace emby {
@@ -19,7 +14,7 @@ MediaCard::MediaCard() {
     image_ = new brls::Image();
     image_->setWidth(200);
     image_->setHeight(280);
-    image_->setScaleType(brls::ImageScaleType::SCALE_TO_FILL);
+    image_->setScalingType(brls::ImageScalingType::SCALE_TO_FILL);
     this->addView(image_);
 
     // Create title label
