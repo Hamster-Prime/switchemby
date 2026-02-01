@@ -43,6 +43,7 @@ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/borealis)
         borealis/library/lib/extern/yoga/src/yoga/event/*.cpp
         borealis/library/lib/extern/yoga/src/yoga/*.cpp
         borealis/library/lib/extern/tinyxml2/*.cpp
+        borealis/library/lib/extern/switch-libpulsar/src/*.c
     )
 
     # Create borealis library
