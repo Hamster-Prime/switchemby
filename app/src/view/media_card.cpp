@@ -29,12 +29,13 @@ MediaCard::MediaCard() {
     title_->setMargins(5, 5, 5, 5);
     this->addView(title_);
 
+    // TODO: ProgressBar not available in current borealis version
     // Create progress bar (initially hidden)
-    progress_ = new brls::ProgressBar();
-    progress_->setHeight(4);
-    progress_->setProgress(0);
-    progress_->setVisibility(brls::Visibility::GONE);
-    this->addView(progress_);
+    // progress_ = new brls::ProgressBar();
+    // progress_->setHeight(4);
+    // progress_->setProgress(0);
+    // progress_->setVisibility(brls::Visibility::GONE);
+    // this->addView(progress_);
 }
 
 MediaCard::~MediaCard() {
@@ -60,14 +61,16 @@ void MediaCard::setImageUrl(const std::string& url) {
 }
 
 void MediaCard::setProgress(float progress) {
-    if (progress_) {
-        if (progress > 0 && progress < 1.0f) {
-            progress_->setProgress(progress);
-            progress_->setVisibility(brls::Visibility::VISIBLE);
-        } else {
-            progress_->setVisibility(brls::Visibility::GONE);
-        }
-    }
+    // TODO: ProgressBar not available in current borealis version
+    // if (progress_) {
+    //     if (progress > 0 && progress < 1.0f) {
+    //         progress_->setProgress(progress);
+    //         progress_->setVisibility(brls::Visibility::VISIBLE);
+    //     } else {
+    //         progress_->setVisibility(brls::Visibility::GONE);
+    //     }
+    // }
+    (void)progress;  // Suppress unused parameter warning
 }
 
 } // namespace view

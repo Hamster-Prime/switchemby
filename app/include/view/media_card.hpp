@@ -19,7 +19,7 @@ public:
 private:
     brls::Image* image_;
     brls::Label* title_;
-    brls::ProgressBar* progress_;
+    // brls::ProgressBar* progress_;  // TODO: ProgressBar not available in current borealis version
 };
 
 } // namespace view

@@ -9,9 +9,6 @@ MediaGrid::MediaGrid() {
     this->setJustifyContent(brls::JustifyContent::FLEX_START);
     this->setAlignItems(brls::AlignItems::FLEX_START);
     this->setGrow(1.0f);
-
-    // Enable scrolling
-    this->setScrollingBehavior(brls::ScrollingBehavior::NATURAL);
 }
 
 MediaGrid::~MediaGrid() {
@@ -26,7 +23,9 @@ void MediaGrid::addItem(brls::View* item) {
 
 void MediaGrid::clear() {
     // Remove all child views
-    this->clearViews();
+    for (auto* item : items_) {
+        this->removeView(item);
+    }
     items_.clear();
 }
 
