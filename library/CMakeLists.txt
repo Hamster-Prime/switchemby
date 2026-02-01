@@ -13,6 +13,18 @@ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/borealis)
             message(STATUS "Patched dk_renderer.hpp to include <optional>")
         endif()
     endif()
+
+    # Patch swkbd.cpp to use correct API function
+    set(SWKBD_FILE "${CMAKE_CURRENT_SOURCE_DIR}/borealis/library/lib/platforms/switch/swkbd.cpp")
+    if(EXISTS ${SWKBD_FILE})
+        file(READ ${SWKBD_FILE} SWKBD_CONTENT)
+        string(FIND "${SWKBD_CONTENT}" "swkbdConfigSetStringLenMaxExt" SWKBD_EXT_FOUND)
+        if(NOT SWKBD_EXT_FOUND EQUAL -1)
+            string(REPLACE "swkbdConfigSetStringLenMaxExt" "swkbdConfigSetStringLenMax" SWKBD_CONTENT "${SWKBD_CONTENT}")
+            file(WRITE ${SWKBD_FILE} "${SWKBD_CONTENT}")
+            message(STATUS "Patched swkbd.cpp to use swkbdConfigSetStringLenMax")
+        endif()
+    endif()
     # Collect all borealis source files
     file(GLOB_RECURSE BOREALIS_SOURCES
         borealis/library/lib/core/*.cpp
