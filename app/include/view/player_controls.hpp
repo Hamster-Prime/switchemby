@@ -15,7 +15,7 @@ public:
     void setPaused(bool paused);
 
 private:
-    brls::Slider* seekBar_;
+    // brls::Slider* seekBar_;  // TODO: Slider not available in current borealis version
     brls::Label* timeLabel_;
     brls::Button* playPauseButton_;
 };

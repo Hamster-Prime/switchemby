@@ -11,16 +11,17 @@ PlayerControls::PlayerControls() {
 
     // Create play/pause button
     playPauseButton_ = new brls::Button();
-    playPauseButton_->setLabel("Play");
+    playPauseButton_->setText("Play");
     playPauseButton_->setWidth(100);
     this->addView(playPauseButton_);
 
+    // TODO: Slider not available in current borealis version
     // Create seek bar
-    seekBar_ = new brls::Slider();
-    seekBar_->setProgress(0);
-    seekBar_->setGrow(1.0f);
-    seekBar_->setMargins(10, 0, 10, 0);
-    this->addView(seekBar_);
+    // seekBar_ = new brls::Slider();
+    // seekBar_->setProgress(0);
+    // seekBar_->setGrow(1.0f);
+    // seekBar_->setMargins(10, 0, 10, 0);
+    // this->addView(seekBar_);
 
     // Create time label
     timeLabel_ = new brls::Label();
@@ -33,9 +34,11 @@ PlayerControls::~PlayerControls() {
 }
 
 void PlayerControls::setPosition(double position) {
-    if (seekBar_) {
-        seekBar_->setProgress(position);
-    }
+    // TODO: Slider not available in current borealis version
+    // if (seekBar_) {
+    //     seekBar_->setProgress(position);
+    // }
+    (void)position;  // Suppress unused parameter warning
 }
 
 void PlayerControls::setDuration(double duration) {
@@ -45,7 +48,7 @@ void PlayerControls::setDuration(double duration) {
 
 void PlayerControls::setPaused(bool paused) {
     if (playPauseButton_) {
-        playPauseButton_->setLabel(paused ? "Play" : "Pause");
+        playPauseButton_->setText(paused ? "Play" : "Pause");
     }
 }
 
