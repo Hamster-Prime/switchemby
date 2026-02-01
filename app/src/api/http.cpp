@@ -1,4 +1,5 @@
 #include "api/http.hpp"
+#include "utils/logger.hpp"
 #include <sstream>
 #include <thread>
 
@@ -8,6 +9,9 @@ namespace http {
 HttpClient::HttpClient() {
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl_ = curl_easy_init();
+    if (!curl_) {
+        utils::Logger::getInstance().error("Failed to initialize CURL");
+    }
 }
 
 HttpClient::~HttpClient() {
@@ -27,10 +31,21 @@ size_t HttpClient::writeCallback(void* contents, size_t size, size_t nmemb, void
 bool HttpClient::request(const RequestConfig& config, std::string& response, std::string& error) {
     if (!curl_) {
         error = "CURL not initialized";
+        utils::Logger::getInstance().error(error);
         return false;
     }
 
     response.clear();
+
+    // Log request
+    std::string methodStr;
+    switch (config.method) {
+        case Method::GET: methodStr = "GET"; break;
+        case Method::POST: methodStr = "POST"; break;
+        case Method::PUT: methodStr = "PUT"; break;
+        case Method::DELETE: methodStr = "DELETE"; break;
+    }
+    utils::Logger::getInstance().debug(methodStr + " " + config.url);
 
     // Set URL
     curl_easy_setopt(curl_, CURLOPT_URL, config.url.c_str());
@@ -83,6 +98,7 @@ bool HttpClient::request(const RequestConfig& config, std::string& response, std
 
     if (res != CURLE_OK) {
         error = curl_easy_strerror(res);
+        utils::Logger::getInstance().error("CURL request failed: " + error);
         return false;
     }
 
@@ -91,9 +107,11 @@ bool HttpClient::request(const RequestConfig& config, std::string& response, std
 
     if (httpCode >= 400) {
         error = "HTTP error: " + std::to_string(httpCode);
+        utils::Logger::getInstance().error("HTTP " + std::to_string(httpCode) + " for " + config.url);
         return false;
     }
 
+    utils::Logger::getInstance().debug("HTTP " + std::to_string(httpCode) + " - Request successful");
     return true;
 }
 
