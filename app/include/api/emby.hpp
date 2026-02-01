@@ -1,6 +1,7 @@
 #pragma once
 
 #include "api/http.hpp"
+#include "utils/logger.hpp"
 #include <nlohmann/json.hpp>
 #include <string>
 #include <functional>
@@ -67,13 +68,17 @@ void EmbyClient::getJSON(const std::function<void(Result)>& callback,
     config.method = http::Method::GET;
 
     httpClient_.requestAsync(config,
-        [callback](const std::string& response) {
+        [callback, errorCallback, url](const std::string& response) {
             try {
                 json j = json::parse(response);
                 Result result = Result::fromJson(j);
                 if (callback) callback(result);
+            } catch (const json::parse_error& e) {
+                utils::Logger::getInstance().error("JSON parse error for " + url + ": " + e.what());
+                if (errorCallback) errorCallback("JSON parse error: " + std::string(e.what()), -1);
             } catch (const std::exception& e) {
-                // JSON parsing error
+                utils::Logger::getInstance().error("Error processing response for " + url + ": " + e.what());
+                if (errorCallback) errorCallback("Error: " + std::string(e.what()), -1);
             }
         },
         errorCallback
@@ -93,13 +98,17 @@ void EmbyClient::postJSON(const json& data,
     config.body = data.dump();
 
     httpClient_.requestAsync(config,
-        [callback](const std::string& response) {
+        [callback, errorCallback, url](const std::string& response) {
             try {
                 json j = json::parse(response);
                 Result result = Result::fromJson(j);
                 if (callback) callback(result);
+            } catch (const json::parse_error& e) {
+                utils::Logger::getInstance().error("JSON parse error for " + url + ": " + e.what());
+                if (errorCallback) errorCallback("JSON parse error: " + std::string(e.what()), -1);
             } catch (const std::exception& e) {
-                // JSON parsing error
+                utils::Logger::getInstance().error("Error processing response for " + url + ": " + e.what());
+                if (errorCallback) errorCallback("Error: " + std::string(e.what()), -1);
             }
         },
         errorCallback
