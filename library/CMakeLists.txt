@@ -84,6 +84,7 @@ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/borealis)
     # Link libraries
     target_link_libraries(borealis PUBLIC
         deko3d
+        audren
         m
     )
 else()
