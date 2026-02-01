@@ -78,7 +78,7 @@ if(PLATFORM_SWITCH)
 
     # Generate NRO
     add_custom_target(${PROJECT_NAME}.nro ALL
-        COMMAND ${DEVKITPRO}/tools/bin/elf2nro ${PROJECT_NAME}.elf ${PROJECT_NAME}.nro
+        COMMAND ${DEVKITPRO}/tools/bin/elf2nro ${PROJECT_NAME}.elf.elf ${PROJECT_NAME}.nro
         DEPENDS ${PROJECT_NAME}.elf
     )
 
