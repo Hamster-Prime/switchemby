@@ -52,7 +52,7 @@ int MpvCore::setProperty(const char* name, mpv_format format, void* data) {
     return mpv_set_property(mpv_, name, format, data);
 }
 
-int MpvCore::getProperty(const char* name, mpv_format format, void* data) {
+int MpvCore::getProperty(const char* name, mpv_format format, void* data) const {
     return mpv_get_property(mpv_, name, format, data);
 }
 

@@ -25,7 +25,7 @@ public:
 
     // Property management
     int setProperty(const char* name, mpv_format format, void* data);
-    int getProperty(const char* name, mpv_format format, void* data);
+    int getProperty(const char* name, mpv_format format, void* data) const;
 
     // Event handling
     void setEventCallback(EventCallback callback);
