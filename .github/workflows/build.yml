@@ -22,7 +22,7 @@ jobs:
         run: |
           dkp-pacman -Syu --noconfirm
           dkp-pacman -S --noconfirm switch-dev switch-portlibs
-          dkp-pacman -S --noconfirm switch-mpv switch-curl
+          dkp-pacman -S --noconfirm switch-libmpv switch-curl
 
       - name: Build
         run: |
