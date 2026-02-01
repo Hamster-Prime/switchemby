@@ -36,7 +36,6 @@ Thumbs.db
 desktop.ini
 
 # Dependencies
-library/borealis/
 !library/CMakeLists.txt
 
 # User data
