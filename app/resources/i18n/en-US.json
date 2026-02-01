@@ -1,0 +1,39 @@
+{
+  "app": {
+    "name": "SwitchEmby",
+    "version": "1.0.0"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "back": "Back",
+    "loading": "Loading...",
+    "error": "Error"
+  },
+  "login": {
+    "title": "Login to Emby",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "server": "Server Address"
+  },
+  "home": {
+    "title": "Home",
+    "continue_watching": "Continue Watching",
+    "latest": "Latest",
+    "recommended": "Recommended"
+  },
+  "library": {
+    "title": "Library",
+    "movies": "Movies",
+    "shows": "TV Shows",
+    "music": "Music"
+  },
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop",
+    "subtitles": "Subtitles",
+    "audio": "Audio"
+  }
+}

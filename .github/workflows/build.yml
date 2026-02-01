@@ -1,0 +1,37 @@
+name: Build SwitchEmby
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ created ]
+
+jobs:
+  build-switch:
+    runs-on: ubuntu-latest
+    container:
+      image: devkitpro/devkita64:latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          dkp-pacman -Syu --noconfirm
+          dkp-pacman -S --noconfirm switch-dev switch-portlibs
+          dkp-pacman -S --noconfirm switch-mpv switch-curl
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake .. -DPLATFORM_SWITCH=ON -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: switchemby-switch
+          path: build/switchemby.nro

@@ -1,0 +1,39 @@
+{
+  "app": {
+    "name": "SwitchEmby",
+    "version": "1.0.0"
+  },
+  "common": {
+    "ok": "确定",
+    "cancel": "取消",
+    "back": "返回",
+    "loading": "加载中...",
+    "error": "错误"
+  },
+  "login": {
+    "title": "登录 Emby",
+    "username": "用户名",
+    "password": "密码",
+    "login": "登录",
+    "server": "服务器地址"
+  },
+  "home": {
+    "title": "首页",
+    "continue_watching": "继续观看",
+    "latest": "最新添加",
+    "recommended": "推荐"
+  },
+  "library": {
+    "title": "媒体库",
+    "movies": "电影",
+    "shows": "电视剧",
+    "music": "音乐"
+  },
+  "player": {
+    "play": "播放",
+    "pause": "暂停",
+    "stop": "停止",
+    "subtitles": "字幕",
+    "audio": "音轨"
+  }
+}

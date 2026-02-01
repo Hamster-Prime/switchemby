@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "primary": "#00A4DC",
+    "secondary": "#52B54B",
+    "background": "#101010",
+    "surface": "#1A1A1A",
+    "text": "#FFFFFF",
+    "textSecondary": "#B3B3B3"
+  },
+  "fonts": {
+    "regular": 16,
+    "large": 20,
+    "title": 24
+  },
+  "spacing": {
+    "small": 8,
+    "medium": 16,
+    "large": 24
+  }
+}
