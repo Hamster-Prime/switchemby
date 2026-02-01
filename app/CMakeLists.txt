@@ -49,6 +49,7 @@ set(APP_SOURCES
     src/utils/image_loader.cpp
     src/utils/string_utils.cpp
     src/utils/time_utils.cpp
+    src/utils/logger.cpp
 )
 
 # Include directories

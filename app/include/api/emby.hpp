@@ -55,4 +55,55 @@ private:
     http::HttpClient httpClient_;
 };
 
+// Template method implementations
+template<typename Result>
+void EmbyClient::getJSON(const std::function<void(Result)>& callback,
+                         OnError errorCallback,
+                         const std::string& endpoint) {
+    std::string url = buildUrl(endpoint);
+
+    http::RequestConfig config;
+    config.url = url;
+    config.method = http::Method::GET;
+
+    httpClient_.requestAsync(config,
+        [callback](const std::string& response) {
+            try {
+                json j = json::parse(response);
+                Result result = Result::fromJson(j);
+                if (callback) callback(result);
+            } catch (const std::exception& e) {
+                // JSON parsing error
+            }
+        },
+        errorCallback
+    );
+}
+
+template<typename Result>
+void EmbyClient::postJSON(const json& data,
+                          const std::function<void(Result)>& callback,
+                          OnError errorCallback,
+                          const std::string& endpoint) {
+    std::string url = buildUrl(endpoint);
+
+    http::RequestConfig config;
+    config.url = url;
+    config.method = http::Method::POST;
+    config.body = data.dump();
+
+    httpClient_.requestAsync(config,
+        [callback](const std::string& response) {
+            try {
+                json j = json::parse(response);
+                Result result = Result::fromJson(j);
+                if (callback) callback(result);
+            } catch (const std::exception& e) {
+                // JSON parsing error
+            }
+        },
+        errorCallback
+    );
+}
+
 } // namespace emby
