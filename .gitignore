@@ -42,6 +42,7 @@ desktop.ini
 config.json
 cache/
 downloads/
+.claude/
 
 # Logs
 *.log
