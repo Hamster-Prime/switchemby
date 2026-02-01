@@ -2,6 +2,17 @@
 # Add as git submodule: git submodule add https://github.com/natinusala/borealis.git library/borealis
 
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/borealis)
+    # Patch dk_renderer.hpp to include <optional> header
+    set(DK_RENDERER_FILE "${CMAKE_CURRENT_SOURCE_DIR}/borealis/library/lib/extern/nanovg-deko3d/include/nanovg/dk_renderer.hpp")
+    if(EXISTS ${DK_RENDERER_FILE})
+        file(READ ${DK_RENDERER_FILE} DK_RENDERER_CONTENT)
+        string(FIND "${DK_RENDERER_CONTENT}" "#include <optional>" OPTIONAL_FOUND)
+        if(OPTIONAL_FOUND EQUAL -1)
+            string(REPLACE "#include \"nanovg.h\"" "#include <optional>\n#include \"nanovg.h\"" DK_RENDERER_CONTENT "${DK_RENDERER_CONTENT}")
+            file(WRITE ${DK_RENDERER_FILE} "${DK_RENDERER_CONTENT}")
+            message(STATUS "Patched dk_renderer.hpp to include <optional>")
+        endif()
+    endif()
     # Collect all borealis source files
     file(GLOB_RECURSE BOREALIS_SOURCES
         borealis/library/lib/core/*.cpp
