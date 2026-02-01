@@ -22,10 +22,10 @@ void MainActivity::setupTabs() {
     brls::TabFrame* tabFrame = new brls::TabFrame();
 
     // Add tabs
-    tabFrame->addTab("Home", new tab::HomeTab());
-    tabFrame->addTab("Library", new tab::LibraryTab());
-    tabFrame->addTab("Search", new tab::SearchTab());
-    tabFrame->addTab("Settings", new tab::SettingsTab());
+    tabFrame->addTab("Home", []() { return new tab::HomeTab(); });
+    tabFrame->addTab("Library", []() { return new tab::LibraryTab(); });
+    tabFrame->addTab("Search", []() { return new tab::SearchTab(); });
+    tabFrame->addTab("Settings", []() { return new tab::SettingsTab(); });
 
     // Set as content view
     this->setContentView(tabFrame);

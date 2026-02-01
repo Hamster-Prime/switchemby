@@ -29,7 +29,7 @@ void ServerList::setupUI() {
 
     // Add server button
     brls::Button* addButton = new brls::Button();
-    addButton->setLabel("Add Server");
+    addButton->setText("Add Server");
     container->addView(addButton);
 
     this->setContentView(container);

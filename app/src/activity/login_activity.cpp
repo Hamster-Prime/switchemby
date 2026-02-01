@@ -29,7 +29,7 @@ void LoginActivity::setupUI() {
 
     // Login button
     brls::Button* loginButton = new brls::Button();
-    loginButton->setLabel("Login");
+    loginButton->setText("Login");
     container->addView(loginButton);
 
     this->setContentView(container);
